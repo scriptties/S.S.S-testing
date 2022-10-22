@@ -1,28 +1,154 @@
 <html>
 <head>
+<script src="https://cdn.jsdeliver.net/npm/js-cookie.min.js"></script>
+<style>
+.cookie {
+  font-size: 8rem;
+  color: brown;
+}
+</style>
+<style>
+body{
+ background: black;
+}
 
+.wrapper{
+   position: absolute;
+   bottom: 30px;
+   left: 30px;
+   background: #fff;
+   max-width: 365px;
+   border-radius: 15px;
+   padding: 25px 25px 30px 25px;
+}
+.wrapper.hide{
+   opacity: 0;
+   visibility: hidden;
+   transition: all 0.3s ease;
+}
+.wrapper .content{
+   margin-top: 10px;
+}
+.content header{
+   font-size: 25px;
+   font-weight: 600;
+}
+.content p{
+   color: #858585;
+   margin: 5px 0 20px 0;
+}
+.content .buttons{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.buttons .item{
+   margin: 0 10px;
+}
+.buttons button{
+   padding: 10px 20px;
+   background: #FCBA7F;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   font-weight: 500;
+   color: #fff;
+   cursor: pointer;
+   border-radius: 5px;
+}
+.buttons a{
+   color: #FCBA7F;
+   
+}
+</style>
+<script>
+ const cookieBox = document.querySelector(".wrapper"),
+ acceptBtn = cookieBox.querySelection("buttons button");
+ acceptBtn.onclick = ()=>{
+   document.cookie = "CookieBy=S.S.Scriptties; max-age=+60*60*24*30;"
+   if(document.cookie){
+      cookieBox.classList.add("hide");
+      }else{
+      alert("Cookie can't be set!");
+   }
+ }
+</script>
+<script>
+import Cookies from 'js-cookie'
+
+Cookies.set('name', 'value', { expires: 2, path: '' })
+
+var myCookie = Cookies.get('name');
+var title = document.querySelector('h1');
+
+console.log(myCookie);
+
+if(myCookie){
+  title.classList.add('cookie');
+}
+
+Cookies.get('name') // => 'value'
+Cookies.get('nothing') // => undefined
+</script>
+<style>
+.loader {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader > img {
+    width: 100px;
+}
+
+.loader.hidden {
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.thumb {
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+}
+</style>
+<script>
+window.addEventListener("load", function () {
+    const loader = document.querySelector(".loader");
+    loader.className += " hidden"; // class "loader hidden"
+});
+</script>
 </head>
 <body>
-
-<center>
-<div class="container">
-<span class="en">English</span>
-<input type="checkbox" class="check">
-<span class="er">عربى</span>
-<div class="content contentEnglish">
-<p> S.s.scriptties. Egyptian male, Indie Game Developer and Artist.<br>
--I'm a Programmer/ Demo Game Developer/ leader of a hacker group, a digital empire, and an old [redacted]<br> that was erased off the face of the internet, I have a not so nice vulgar<br>, narcissistic, freaky and comedic personality. (we are an empire with hackers, programmers, exceptional<br> people with different political, philosophical, and economical views that thrive for internet domination, join us)
- <br>
-- For more info click <a href="https://www.canva.com/design/DAEu1ysc6e4/iZT2LfH-eQzcYaougnxQqw/view?utm_content=DAEu1ysc6e4&utm_campaign=designshare&utm_medium=link&utm_source=publishpresent"> here </a> and if you want to read our privacy policy click <a href="https://www.termsfeed.com/live/36e85ce0-c33b-4345-b7b7-1b3ec4a8637f"> here </a><br>, I'm also happy to anounce that we now support <a href="https://ssscriptties.itch.io/sss-android-supported-app-version-of-our-website"> android </a>
- ,<br> and you can now use our currency (<a href="https://ropsten.etherscan.io/token/0x7762b91db1cc7eaff3ef4a62f1b7fe680f8539b3?a=0xdc597d60e427279ae5c2977483d2408acb830ed0"> $.$.$ </a>) to trade projects, source code, art and etc that you can get by making me have a good time <br>or making funny projects on our community which is now run and managed with an IP system <br>
- <strong><em>Note: If The Services button in the main page redirects to the Fiverr Homepage and not my Fiverr profile... then I'm offline </em></strong><br>
- <strong>Warning: this website Uses CryptoJaking aswell as most of the pages in it, You won't be asked for consent<br> so if you don't approve of it leave now. CryptoJacking isn't considered that bad since it can be used as<br> replacement for advertisement<br> and mine doesn't even take that much energy meaning you aren't losing much.</strong>
-</p>
+ 
+<div class="loader">
+    <img src="https://www.oos-studio.com/static/media/loadingAnimation.6f50e844.gif" alt="Loading..." />
 </div>
-<div class="content contentArabic">
-<p>S.sscriptities. مصري ، مطور وفنان ألعاب إندي.
-<br>أنا مبرمج / مطور ألعاب تجريبية / قائد مجموعة قراصنة وإمبراطورية رقمية و [منقح] قديم<br>التي تم محوها من على الإنترنت ، لدي شخصية مبتذلة غير لطيفة <br> ، نرجسية ، مرعبة ، وكوميدية. (نحن إمبراطورية بها قراصنة ، ومبرمجون ، وأشخاص استثنائيون <br> ذوو وجهات نظر سياسية وفلسفية واقتصادية مختلفة تزدهر من أجل السيطرة على الإنترنت ، انضم إلينا)<br> لمزيد من المعلومات انقر <a href="https://www.canva.com/design/DAEu1ysc6e4/iZT2LfH-eQzcYaougnxQqw/view?utm_content=DAEu1ysc6e4&utm_campaign=designshare&utm_medium=link&utm_source=publishpresent"> هنا </a> وإذا كنت ترغب في قراءة سياسة الخصوصية الخاصة بنا ، فانقر <a href="https://www.termsfeed.com/live/36e85ce0-c33b-4345-b7b7-1b3ec4a8637f"> هنا </a><br>، يسعدني أيضًا أن أعلن أننا ندعمه الآن <a href="https://ssscriptties.itch.io/sss-android-supported-app-version-of-our-website"> هواتف أندرويد </a> , <br> ويمكنك الآن استخدام عملتنا (<a href="https://ropsten.etherscan.io/token/0x7762b91db1cc7eaff3ef4a62f1b7fe680f8539b3?a=0xdc597d60e427279ae5c2977483d2408acb830ed0"> $.$.$ </a>) للتداول في المشاريع ورموز المصدر والفن وما إلى ذلك التي يمكنك الحصول عليها بجعلني أقضي وقتًا ممتعًا <br> أو إنشاء مشاريع مضحكة على مجتمعنا يتم تشغيلها وإدارتها الآن باستخدام نظام بروتوكول الإنترنت <br> <strong><em>ملاحظة: إذا كان زر الخدمات في الصفحة الرئيسية يعيد التوجيه إلى صفحة Fiverr الرئيسية وليس ملفي الشخصي على Fiverr ... فأنا غير متصل </em></strong><br><strong> تحذير: يستخدم هذا الموقع CryptoJaking مثل معظم الصفحات الموجودة فيه ، ولن يُطلب منك الموافقة <br> لذلك إذا كنت لا توافق على ذلك ، غادر الآن. لا يعتبر CryptoJacking بهذا السوء لأنه يمكن استخدامه كـ <br> بديل للإعلان <br> وأنا لا أستهلك الكثير من الطاقة مما يعني أنك لا تخسر الكثير. </strong> </p>
-</div>
+ 
+<div class="wrapper">
+   <div class="content">
+     <header>Cookies Concent</header>
+     <p>this website uses cookies</p>
+     <div class="buttons">
+       <button class="item">I understand</button>
+       <a href="#" class="item">Learn more</a>
+     </div>
+   </div>
 
-</body>
+</div>
+</body
 </html>

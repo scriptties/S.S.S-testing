@@ -40,69 +40,6 @@ function checkCookie() {
 body{
  background: black;
 }
-
-.wrapper{
-   position: absolute;
-   bottom: 30px;
-   left: 30px;
-   background: #fff;
-   max-width: 365px;
-   border-radius: 15px;
-   padding: 25px 25px 30px 25px;
-}
-.wrapper.hide{
-   opacity: 0;
-   visibility: hidden;
-   transition: all 0.3s ease;
-}
-.wrapper .content{
-   margin-top: 10px;
-}
-.content header{
-   font-size: 25px;
-   font-weight: 600;
-}
-.content p{
-   color: #858585;
-   margin: 5px 0 20px 0;
-}
-.content .buttons{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-.buttons .item{
-   margin: 0 10px;
-}
-.buttons button{
-   padding: 10px 20px;
-   background: #FCBA7F;
-   border: none;
-   outline: none;
-   font-size: 16px;
-   font-weight: 500;
-   color: #fff;
-   cursor: pointer;
-   border-radius: 5px;
-}
-.buttons a{
-   color: #FCBA7F;
-   
-}
-</style>
-<script>
- const cookieBox = document.querySelector(".wrapper"),
- acceptBtn = cookieBox.querySelection("buttons button");
- acceptBtn.onclick = ()=>{
-   document.cookie = "CookieBy=S.S.Scriptties; max-age=+60*60*24*30;"
-   if(document.cookie){
-      cookieBox.classList.add("hide");
-      }else{
-      alert("Cookie can't be set!");
-   }
- }
-</script>
-
 <style>
 .loader {
     position: fixed;
@@ -145,6 +82,42 @@ window.addEventListener("load", function () {
     loader.className += " hidden"; // class "loader hidden"
 });
 </script>
+<style>
+.cookie-banner {
+	position: fixed;
+	bottom: 40px;
+	left: 10%;
+  right: 10%;
+  width: 80%;
+  padding: 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  height: 20px;
+  background-color: #777;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+</style>
+<script>
+if(localStorage.getItem('cookieSeen') != 'shown'){
+    $(".cookie-banner").delay(2000).fadeIn();
+    localStorage.setItem('cookieSeen','shown')
+}
+
+$('.close').click(function(e) {
+  $('.cookie-banner').fadeOut(); 
+});
+</script>
 </head>
   <body onload="checkCookie()"></body>
 <body>
@@ -152,16 +125,11 @@ window.addEventListener("load", function () {
 <div class="loader">
     <img src="https://www.oos-studio.com/static/media/loadingAnimation.6f50e844.gif" alt="Loading..." />
 </div>
- 
-<div class="wrapper">
-   <div class="content">
-     <header>Cookies Concent</header>
-     <p>this website uses cookies</p>
-     <div class="buttons">
-       <button class="item">I understand</button>
-       <a href="https://www.trendmicro.com/vinfo/us/security/definition/cookies#:~:text=A%20cookie%20is%20a%20piece,returned%20to%20a%20particular%20website." class="item">Learn more</a>
-     </div>
-   </div>
+  
+<div class="cookie-banner" style="display: none">
+	<p>By using our website, you agree to our <a href=’’>cookie policy</a></p>
+	<button class="close">&times;</button>
+</div>
 
 </div>
 </body

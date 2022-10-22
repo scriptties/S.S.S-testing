@@ -127,8 +127,6 @@ window.addEventListener("load", function () {
 }
 </style>
 <script>
-// This function is required to test if local storage is available, if not (private mode usually) we just don't show the cookie banner
-
 function testLocalStorage() {
 	var testLS = 'testLS';
 	try {
@@ -154,7 +152,7 @@ if(testLocalStorage() === true){
 		localStorage.setItem('cookieDisclaimer', true);
 		cookieDisclaimer.classList.remove('show');
 	});
-}
+}	
 </script>
 </head>
   <body onload="checkCookie()"></body>
@@ -162,6 +160,14 @@ if(testLocalStorage() === true){
  
 <div class="loader">
     <img src="https://www.oos-studio.com/static/media/loadingAnimation.6f50e844.gif" alt="Loading..." />
+</div>
+	
+<div class="disclaimer-container">
+	<div class="container">
+		<div class="disclaimer-text">
+      <p>We use cookies to give you the best possible experience on our website. By clicking OK, you agree to our cookie policy. If you would like to change your cookie preferences you may do so <span class="link-special"><a href="#">here</a></span>. <span class="disclaimer-button">OK</span></p>
+		</div>
+	</div>
 </div>
   
 </div>

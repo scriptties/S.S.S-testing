@@ -84,36 +84,77 @@ window.addEventListener("load", function () {
 });
 </script>
 <style>
-.cookie-banner {
-  position: fixed;
-  bottom: 40px;
-  left: 10%;
-  right: 10%;
-  width: 80%;
-  padding: 5px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #eee;
-  border-radius: 5px;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
+.disclaimer-container {
+	background-color: #555;
+	color: #fff;
+	display: none;
+  font-family: 'Open Sans', sans-serif;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	width: 100%;
 }
-
-.close {
-  height: 20px;
-  background-color: #777;
-  border: none;
-  color: white;
-  border-radius: 2px;
+.disclaimer-container.show {
+  display: block;
+}
+.disclaimer-container .disclaimer-text {
+	padding: 8px;
+}
+.disclaimer-container .disclaimer-text p {
+  font-size: 12px;
+  line-height: 22px;
+  margin: 0;
+  text-align: center;
+}
+.disclaimer-container .disclaimer-text p span:before {
+  color: #fff;
+}
+.disclaimer-container .disclaimer-text p a {
+  color: #fff;
+}
+.disclaimer-container .disclaimer-button {
+  background-color: #ddd;
+  color: #555;
   cursor: pointer;
+  display: inline-block;
+  margin-left: 16px;
+  padding: 2px 8px;
 }
-
+.disclaimer-container .disclaimer-button:hover {
+  background-color: #ad0f5b;
+  color: #fff;
+}
 </style>
 <script>
+// This function is required to test if local storage is available, if not (private mode usually) we just don't show the cookie banner
 
-$('.close').click(function(e) {
-  $('.cookie-banner').fadeOut(); 
-});
+function testLocalStorage() {
+	var testLS = 'testLS';
+	try {
+		localStorage.setItem(testLS, true);
+		localStorage.removeItem(testLS);
+		return true;
+	} catch(e) {
+		return false;
+	}
+}
+
+// If localStorage is available
+if(testLocalStorage() === true){
+	var cookieDisclaimer = document.querySelector('.disclaimer-container');
+	var cookieDisclaimerHeight = $('.disclaimer-container').height();
+	var mainHeaderTop = $('#main-header').css("top");
+	$('.disclaimer-container').css("top", mainHeaderTop);
+	if (!localStorage.getItem('cookieDisclaimer')) {
+		cookieDisclaimer.classList.add('show');
+		$('#main-header').css("top", parseInt(mainHeaderTop) + cookieDisclaimerHeight);
+	}
+	cookieDisclaimer.querySelector('.disclaimer-button').addEventListener('click', function() {
+		localStorage.setItem('cookieDisclaimer', true);
+		cookieDisclaimer.classList.remove('show');
+	});
+}
 </script>
 </head>
   <body onload="checkCookie()"></body>
@@ -123,11 +164,6 @@ $('.close').click(function(e) {
     <img src="https://www.oos-studio.com/static/media/loadingAnimation.6f50e844.gif" alt="Loading..." />
 </div>
   
-<div class="cookie-banner" style="display: none">
-	<p>By using our website, you agree to our <a href=’’>cookie policy</a></p>
-	<button class="close">&times;</button>
-</div>
-
 </div>
 </body
 </html>

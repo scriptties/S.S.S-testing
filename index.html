@@ -83,77 +83,11 @@ window.addEventListener("load", function () {
     loader.className += " hidden"; // class "loader hidden"
 });
 </script>
-<style>
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
-.disclaimer-container {
-	background-color: #555;
-	color: #fff;
-	display: none;
-  font-family: 'Open Sans', sans-serif;
-	position: fixed;
-	top: 0;
-	z-index: 999;
-	width: 100%;
-}
-.disclaimer-container.show {
-  display: block;
-}
-.disclaimer-container .disclaimer-text {
-	padding: 8px;
-}
-.disclaimer-container .disclaimer-text p {
-  font-size: 12px;
-  line-height: 22px;
-  margin: 0;
-  text-align: center;
-}
-.disclaimer-container .disclaimer-text p span:before {
-  color: #fff;
-}
-.disclaimer-container .disclaimer-text p a {
-  color: #fff;
-}
-.disclaimer-container .disclaimer-button {
-  background-color: #ddd;
-  color: #555;
-  cursor: pointer;
-  display: inline-block;
-  margin-left: 16px;
-  padding: 2px 8px;
-}
-.disclaimer-container .disclaimer-button:hover {
-  background-color: #ad0f5b;
-  color: #fff;
-}
-</style>
-<script>
-function testLocalStorage() {
-	var testLS = 'testLS';
-	try {
-		localStorage.setItem(testLS, true);
-		localStorage.removeItem(testLS);
-		return true;
-	} catch(e) {
-		return false;
-	}
-}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-// If localStorage is available
-if(testLocalStorage() === true){
-	var cookieDisclaimer = document.querySelector('.disclaimer-container');
-	var cookieDisclaimerHeight = $('.disclaimer-container').height();
-	var mainHeaderTop = $('#main-header').css("top");
-	$('.disclaimer-container').css("top", mainHeaderTop);
-	if (!localStorage.getItem('cookieDisclaimer')) {
-		cookieDisclaimer.classList.add('show');
-		$('#main-header').css("top", parseInt(mainHeaderTop) + cookieDisclaimerHeight);
-	}
-	cookieDisclaimer.querySelector('.disclaimer-button').addEventListener('click', function() {
-		localStorage.setItem('cookieDisclaimer', true);
-		cookieDisclaimer.classList.remove('show');
-	});
-}	
-</script>
+
 </head>
   <body onload="checkCookie()"></body>
 <body>
@@ -162,13 +96,18 @@ if(testLocalStorage() === true){
     <img src="https://www.oos-studio.com/static/media/loadingAnimation.6f50e844.gif" alt="Loading..." />
 </div>
 	
-<div class="disclaimer-container">
-	<div class="container">
-		<div class="disclaimer-text">
-      <p>We use cookies to give you the best possible experience on our website. By clicking OK, you agree to our cookie policy. If you would like to change your cookie preferences you may do so <span class="link-special"><a href="#">here</a></span>. <span class="disclaimer-button">OK</span></p>
-		</div>
-	</div>
+<div class="alert alert-warning alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Warning!</strong> this site uses Cookies and Cryptojacking continuing means you concent.
 </div>
+	
+</div>
+  <div class="alert alert-info alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Info!</strong> If The Services button in the main page redirects to the Fiverr Homepage and not my Fiverr profile... then I'm offline.
+</div>
+	
+
   
 </div>
 </body
